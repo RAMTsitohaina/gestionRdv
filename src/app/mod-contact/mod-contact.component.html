@@ -1,0 +1,54 @@
+<div class="search">
+    <form [formGroup] = 'contactForm'>
+        <mat-form-field appearance="outline">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-label>Nom/Prénom</mat-label>
+            <input matInput type="text" formControlName = "nomPrenomCtrl">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-icon matPrefix>phone</mat-icon>
+            <mat-label>Téléphone</mat-label>
+            <input matInput type="text" formControlName = "telephoneCtrl">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-icon matPrefix>location_on</mat-icon>
+            <mat-label>Adresse</mat-label>
+            <input matInput type="text" formControlName = "adresseCtrl">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-icon matPrefix>work</mat-icon>
+            <mat-label>Profession</mat-label>
+            <input matInput type="text" formControlName = "professionCtrl">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-icon matPrefix>location_city</mat-icon>
+            <mat-label>Entreprise</mat-label>
+            <input matInput type="text" formControlName = "entrepriseCtrl">
+        </mat-form-field>
+    </form>
+</div>
+
+<div class="contact-list">
+    <mat-card *ngFor="let contact of contactData" class="contact-content" (click) = 'openContactEdit(contact)'>
+        <mat-card-header>
+            <mat-card-title class="card-content" matTooltip="{{ contact.nom }}  {{ contact.prenom }}">{{ contact.nom }} {{ contact.prenom }}</mat-card-title>
+            <mat-card-subtitle class="card-content" matTooltip="{{ contact.phone }}">{{ contact.phone }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="card-content" matTooltip="{{ contact.adresse }}">Adresse : {{ contact.adresse }}</p>
+            <p *ngIf="contact.profession" class="card-content" matTooltip="{{ contact.profession }}">Profession : {{ contact.profession }}</p>
+            <p *ngIf="contact.entreprise" class="card-content" matTooltip="{{ contact.entreprise }}">Entreprise : {{ contact.entreprise }}</p>
+        </mat-card-content>
+        <mat-card-content>
+            <button (click) = "showDelete(contact)" class="delete" ><mat-icon style="color: #f44336;">delete</mat-icon></button>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<button mat-fab color="primary" matTooltip="Nouveau contact" class="nouveau-contact" (click)=openDialog()>
+    <mat-icon>add</mat-icon>
+</button>

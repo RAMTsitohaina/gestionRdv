@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Nouveau rendez-vous le {{ rdvData.date | date: 'dd/MM/YYYY' }}</h2>
+
+<div class="formulaire">
+  <form [formGroup]="rdvForm">
+    <div class="section">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Titre</mat-label>
+        <input matInput type="text" formControlName = "titreCtrl" required>
+      </mat-form-field>
+    </div>
+    
+    <div class="section">
+      <mat-form-field appearance="outline">
+        <mat-label>Heure de début</mat-label>
+        <input matInput type="time" formControlName="heureDebutCtrl" required>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Heure de fin</mat-label>
+        <input matInput type="time" formControlName="heureFinCtrl" required>
+      </mat-form-field>
+    </div>
+  
+    <div class="section">
+      <mat-form-field appearance="outline">
+        <mat-label>Contact</mat-label>
+
+        <input matInput formControlName="contactCtrl" placeholder="Rechercher une option" [matAutocomplete]="auto" required>
+        <mat-autocomplete #auto='matAutocomplete'>
+          
+          <div *ngIf="filteredOptions.length > 0">
+            <ng-container *ngFor="let option of filteredOptions">
+              <mat-option [value]="option.nom + ' ' + option.prenom" (onSelectionChange)="selectionContact(option)">{{option.nom}}  {{option.prenom}}</mat-option>
+            </ng-container>
+          </div>
+        </mat-autocomplete>
+
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" formControlName="descriptionCtrl">
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="boutton">
+      <button mat-button (click)="onCancel()">Annuler</button>
+      <button mat-button (click)="onSave()">Enregistrer</button>
+    </div>
+  </form>
+</div>

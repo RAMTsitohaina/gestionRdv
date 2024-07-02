@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Nouveau contact</h2>
+
+<div class="formulaire">
+  <form [formGroup]="contactForm">
+    <div class="section">
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-label>Nom</mat-label>
+        <input matInput type="text" formControlName = "nomCtrl" required>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-label>Prénom</mat-label>
+        <input matInput type="text" formControlName = "prenomCtrl" required>
+      </mat-form-field>
+    </div>
+    
+    <div class="section">
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>phone</mat-icon>
+        <mat-label>Téléphone</mat-label>
+        <input matInput type="tel" formControlName="telephoneCtrl">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>location_on</mat-icon>
+        <mat-label>Adresse</mat-label>
+        <input matInput type="text" formControlName="adresseCtrl">
+      </mat-form-field>
+    </div>
+  
+    <div class="section">
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>work</mat-icon>
+        <mat-label>Profession</mat-label>
+        <input matInput type="text" formControlName="professionCtrl">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>location_city</mat-icon>
+        <mat-label>Entreprise</mat-label>
+        <input matInput type="text" formControlName="entrepriseCtrl">
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="boutton">
+      <button mat-button (click)="onCancel()">Annuler</button>
+      <button mat-button (click)="onSave()">Enregistrer</button>
+    </div>
+  </form>
+</div>

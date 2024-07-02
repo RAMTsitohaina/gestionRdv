@@ -1,0 +1,45 @@
+mat-form-field {
+    margin: 14px; 
+}
+
+.nouveau-contact {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-list {
+    margin-left: 13%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-content {
+    width: 16rem;
+    margin: 20px;
+}
+
+.contact-content:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.card-content {
+    display: flex; /* Enable Flexbox layout */
+    flex-direction: column; /* Stack content vertically */
+    overflow: hidden; /* Clip overflowing content */
+    text-overflow: ellipsis; /* Add ellipsis for truncation */
+  }
+
+.delete {
+    position: absolute;
+    right: 13px;
+    bottom: 13px;
+}

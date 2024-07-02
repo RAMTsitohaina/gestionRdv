@@ -1,0 +1,10 @@
+<h2>Suppression</h2>
+<div class="content">
+    <mat-dialog-content>
+        Voulez-vous vraiment supprimer {{ contactData.nomPrenom }}
+    </mat-dialog-content>
+    <mat-dialog-actions class="bouton">
+        <button mat-button mat-dialog-close (click)="onCancel()">Annuler</button>
+        <button mat-button cdkFocusInitial class="supprimer" (click)="onDelete()">Supprimer</button>
+    </mat-dialog-actions>    
+</div>

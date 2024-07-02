@@ -1,0 +1,17 @@
+.formulaire {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section {
+    display: flex;
+    gap: 20px;
+}
+
+.boutton {
+    display: flex;
+    justify-content: end;
+}
