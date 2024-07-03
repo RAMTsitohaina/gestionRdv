@@ -116,22 +116,24 @@ export class RdvManageComponent {
     this.rdv.date = moment(this.rdvForm.get('dateCtrl')?.value).format('YYYY-MM-DD');
     this.rdv.heure_debut = this.rdvForm.get('heureDebutCtrl')?.value;
     this.rdv.heure_fin = this.rdvForm.get('heureFinCtrl')?.value;
-    this.rdv.contact = this.selectedContact.id;
+    this.rdv.contact = this.selectedContact?.id;
     this.rdv.description = this.rdvForm.get('descriptionCtrl')?.value ? this.rdvForm.get('descriptionCtrl')?.value : null;
     
-    if (this.rdvForm.valid && !this.rdvData.id) {
+    if (this.rdvForm.valid && !this.rdvData.id && this.rdv.contact && (this.selectedContact?.nom + ' ' + this.selectedContact?.prenom == this.rdvForm.get('contactCtrl')?.value)) {
       // Création d'un rdv
       this.rdvService.createRdv(this.rdv).subscribe((data) => {
         this.snackBar.open(data.body+'', '', { duration: 3000 });
         this.dialogRef.close();
       });
-    } else if (this.rdvForm.valid && this.rdvData.id) {
+    } else if (this.rdvForm.valid && this.rdvData.id && this.rdv.contact && (this.selectedContact?.nom + ' ' + this.selectedContact?.prenom == this.rdvForm.get('contactCtrl')?.value)) {
       // Mis à jour d'un rdv
       this.rdvService.updateRdv(this.rdvData.id, this.rdv).subscribe((data) => {
         this.snackBar.open(data.body+'', '', { duration: 3000 });
         this.saveRdv.emit('Contact à jour');
         this.dialogRef.close();
       });
+    } else if (!this.selectedContact?.id || (this.selectedContact?.nom + ' ' + this.selectedContact?.prenom != this.rdvForm.get('contactCtrl')?.value)){
+      this.snackBar.open('Veuiller sélectionner un contact', '', { duration: 3000 });
     }
   }
 

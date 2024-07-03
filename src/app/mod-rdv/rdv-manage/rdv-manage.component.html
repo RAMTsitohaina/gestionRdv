@@ -25,7 +25,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Contact</mat-label>
 
-        <input matInput formControlName="contactCtrl" placeholder="Rechercher une option" [matAutocomplete]="auto" required>
+        <input matInput formControlName="contactCtrl" placeholder="Contact" [matAutocomplete]="auto" required>
         <mat-autocomplete #auto='matAutocomplete'>
           
           <div *ngIf="filteredOptions.length > 0">
@@ -45,8 +45,8 @@
 
     <div mat-dialog-actions class="boutton">
       <button mat-button (click)="onCancel()">Annuler</button>
-      <button mat-button (click)="onSave()">Enregistrer</button>
-      <button mat-button *ngIf="rdvData.id" (click)="onDelete()">Supprimer</button>
+      <button mat-button (click)="onSave()" color="primary">Enregistrer</button>
+      <button mat-button *ngIf="rdvData.id" (click)="onDelete()" color="warn">Supprimer</button>
     </div>
   </form>
 </div>
