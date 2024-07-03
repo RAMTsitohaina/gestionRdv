@@ -26,6 +26,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { RdvManageComponent } from './mod-rdv/rdv-manage/rdv-manage.component';
 import { CommonModule } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ConfirmRdvComponent } from './mod-rdv/confirm-rdv/confirm-rdv.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ContactManageComponent,
     ConfirmContactComponent,
     RdvManageComponent,
+    ConfirmRdvComponent,
   ],
   imports: [
     BrowserModule,
