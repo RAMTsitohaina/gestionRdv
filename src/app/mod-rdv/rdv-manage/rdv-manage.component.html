@@ -30,7 +30,7 @@
           
           <div *ngIf="filteredOptions.length > 0">
             <ng-container *ngFor="let option of filteredOptions">
-              <mat-option [value]="option.nom + ' ' + option.prenom" (onSelectionChange)="selectionContact(option)">{{option.nom}}  {{option.prenom}}</mat-option>
+              <mat-option [value]="option.nom + ' ' + option.prenom">{{option.nom}}  {{option.prenom}}</mat-option>
             </ng-container>
           </div>
         </mat-autocomplete>
