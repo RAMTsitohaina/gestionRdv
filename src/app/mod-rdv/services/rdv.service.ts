@@ -56,7 +56,7 @@ export class RdvService {
       return this.http.put(`${API_URL}update_rdv/` + idRdv, rdv, { observe: 'response' });
   }
 
-  deleteContact (idRdv: number){
+  deleteRdv (idRdv: number){
     /*
       DESC : Suppression d'un Rendez-vous
     */

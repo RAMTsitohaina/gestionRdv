@@ -1,0 +1,22 @@
+h2 {
+    margin: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.bouton {
+    display: flex;
+    justify-content: end;
+    margin: 12px;
+}
+
+.supprimer {
+    background: rgb(255 0 0 / 86%);
+}
+
+.supprimer:hover {
+    background: #f012123d;
+}

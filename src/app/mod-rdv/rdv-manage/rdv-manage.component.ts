@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../../mod-contact/contact.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,6 +7,7 @@ import { RdvService } from '../services/rdv.service';
 import * as moment  from 'moment';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { map, filter } from 'rxjs';
+import { ConfirmRdvComponent } from '../confirm-rdv/confirm-rdv.component';
 
 @Component({
   selector: 'app-rdv-manage',
@@ -54,7 +55,7 @@ export class RdvManageComponent {
     private contactService: ContactService,
     private rdvService: RdvService,
     private snackBar: MatSnackBar,
-    // private auto: MatAutocompleteTrigger,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() { 
@@ -91,6 +92,10 @@ export class RdvManageComponent {
     }
   }
 
+  selectionContact(option: any){
+    this.selectedContact = option;
+  }
+
   filterOptions(value: any) {
     /*
       DESC :Filtrer les contacts
@@ -106,7 +111,7 @@ export class RdvManageComponent {
     /*
       DESC : Sauvegarde d'une création ou d'un mis à jour d'un contact
     */
-
+   
     this.rdv.titre = this.rdvForm.get('titreCtrl')?.value;
     this.rdv.date = moment(this.rdvForm.get('dateCtrl')?.value).format('YYYY-MM-DD');
     this.rdv.heure_debut = this.rdvForm.get('heureDebutCtrl')?.value;
@@ -128,6 +133,21 @@ export class RdvManageComponent {
         this.dialogRef.close();
       });
     }
+  }
+
+  onDelete() {
+    /*
+      DESC : Suppression d'un rendez-vous
+    */
+      const dialogRef = this.dialog.open(ConfirmRdvComponent, {
+        data: {
+          id: this.rdvData.id
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(res => {
+        this.dialogRef.close()
+      })
   }
 
 }
